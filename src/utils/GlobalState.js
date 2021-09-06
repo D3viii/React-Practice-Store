@@ -35,4 +35,13 @@ function reducer(state, action) {
     }
 }
 
+function TodoProvider({ value = [], ...props }) {
+    const [state, dispatch] = useReducer(reducer, []);
 
+    return <Provider value={[state, dispatch]} {...props} />;
+}
+function useTodoContext() {
+    return useContext(TodoContext);
+}
+
+export { TodoProvider, useTodoContext};
